@@ -18,7 +18,12 @@ stop("invalid outcome")
 ## rate
 cond<-which(validoc==outcome,arr.ind=T)
 
-condcode<-validoc[2,cond[1]]
+condcode<-validoc[cond[1],2]
 
+hospdata <- read.csv("outcome-of-care-measures.csv", na.strings="Not Available")
+hospdata<-hospdata[order(hospdata[ ,2],decreasing=F),]
 
+##hospdata[ ,condcode]
+posit<-which(hospdata[ ,condcode]==min(hospdata[ ,condcode],na.rm=T), arr.ind=T)
+hospdata[posit,2]
 }
