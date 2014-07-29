@@ -1,0 +1,14 @@
+RankOne <- function(hospd,condcode, num = "best")
+{
+if (num=="best"){
+  rank<-1}
+else if (num=="worst")
+ {rank<-sum(!is.na(hospd[,condcode]))
+rank}
+else 
+  {rank<-as.numeric(as.character(num))
+        }
+hospd<-hospd[order(hospd[ ,condcode],decreasing=F),]
+hospd[rank,2]
+
+}
